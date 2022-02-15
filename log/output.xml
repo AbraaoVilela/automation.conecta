@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.0 on darwin)" generated="20220105 23:09:57.150" rpa="false" schemaversion="2">
+<suite id="s1" name="Auth" source="/Users/abraaovilela/automation/roborframework/automation.conecta/tests/Auth.robot">
+<test id="s1-t1" name="User Sessions">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${payload}</var>
+<arg>appID=665c3bf8-84b4-4aca-a37f-db54fd9495e0</arg>
+<arg>password=38359fea-78ae-4e6c-85d3-32922314f878</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220105 23:09:57.319" level="INFO">${payload} = {'appID': '665c3bf8-84b4-4aca-a37f-db54fd9495e0', 'password': '38359fea-78ae-4e6c-85d3-32922314f878'}</msg>
+<status status="PASS" starttime="20220105 23:09:57.319" endtime="20220105 23:09:57.319"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${API_AUTH}</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20220105 23:09:58.170" level="INFO">POST Request : url=https://api.dev.amedigital.com/ame-protect-corp-api/v1 
+ path_url=/ame-protect-corp-api/v1 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '101', 'Content-Type': 'application/json'} 
+ body=b'{"appID": "665c3bf8-84b4-4aca-a37f-db54fd9495e0", "password": "38359fea-78ae-4e6c-85d3-32922314f878"}' 
+ </msg>
+<msg timestamp="20220105 23:09:58.171" level="INFO">POST Response : url=https://api.dev.amedigital.com/ame-protect-corp-api/v1 
+ status=404, reason=Not Found 
+ headers={'Date': 'Thu, 06 Jan 2022 02:09:58 GMT', 'Content-Length': '0', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', 'Content-Security-Policy': "frame-ancestors 'none'"} 
+ body=None 
+ </msg>
+<msg timestamp="20220105 23:09:58.182" level="FAIL">HTTPError: 404 Client Error: Not Found for url: https://api.dev.amedigital.com/ame-protect-corp-api/v1</msg>
+<status status="FAIL" starttime="20220105 23:09:57.320" endtime="20220105 23:09:58.182"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" starttime="20220105 23:09:58.183" endtime="20220105 23:09:58.183"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220105 23:09:58.183" endtime="20220105 23:09:58.183"/>
+</kw>
+<status status="FAIL" starttime="20220105 23:09:57.318" endtime="20220105 23:09:58.184">HTTPError: 404 Client Error: Not Found for url: https://api.dev.amedigital.com/ame-protect-corp-api/v1</status>
+</test>
+<doc>Auth route test suite</doc>
+<status status="FAIL" starttime="20220105 23:09:57.152" endtime="20220105 23:09:58.185"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Auth">Auth</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
